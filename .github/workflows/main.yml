@@ -17,6 +17,9 @@ jobs:
           java-version: 17
       - run: npm install
       - run: npx cap add android
+      - run: pip install pillow
+      - run: python make_icon.py
+      - run: npx @capacitor/assets generate --android
       - run: npx cap sync android
       - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
